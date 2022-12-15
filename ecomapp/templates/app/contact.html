@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row my-3">
+        <div class="col-sm-6 offset-sm-3">
+            <h3>Contact US</h3>
+            <hr>
+            <form action="" method="post">
+                {% csrf_token %}
+                
+                {% for fm in form %}
+                <div class="row ">
+                    <label for="exampleInputEmail1" class="form-label">{{fm.label_tag}}</label>
+                     {{fm}} 
+                    <small class = "text-danger"> 
+                        {{fm.errors|striptags}}
+                    </small> <br>
+                </div>
+                {% endfor %}
+                <input type="submit" value="Submit" class="btn btn-success">
+             </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock main-content %}
